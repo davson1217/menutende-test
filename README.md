@@ -41,6 +41,10 @@ https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/
    1. POST `add-category/your-first-name` to add a new category.
    2. GET `categories/your-first-name` to retrieve a list of all categories.
    3. DELETE `category/your-first-name/categoryId` to delete a category.
+3. Your POST request to the server should have the following schema
+{
+   category: string
+}
 
 
 ## Notes
