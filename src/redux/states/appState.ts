@@ -1,31 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-export enum View {
-    None,
-    CategoryList,
-    CategoryAdd,
-}
-
-interface CounterState {
-    title: string;
-    view: View
-}
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { CounterState, ViewType } from "../../utils/types";
 
 const initialState: CounterState = {
-    title: 'Menutender',
-    view: View.CategoryAdd
-}
+  title: "Menutender",
+  view: ViewType.CategoryAdd,
+};
 
 export const appState = createSlice({
-    name: 'app',
-    initialState,
-    reducers: {
-        setView: (state, action: PayloadAction<{view: View}>) => {
-            state.view = action.payload.view;
-        }
+  name: "app",
+  initialState,
+  reducers: {
+    setView: (state, action: PayloadAction<{ view: ViewType }>) => {
+      state.view = action.payload.view;
     },
-})
+  },
+});
 
-export const { setView } = appState.actions
+export const { setView } = appState.actions;
 
-export default appState.reducer
+export default appState.reducer;
