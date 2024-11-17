@@ -1,10 +1,15 @@
-import { configureStore } from '@reduxjs/toolkit'
-import AppState from "./states/appState";
+import { configureStore } from '@reduxjs/toolkit';
+import appState from './states/appState';
+import categoryReducer from './categorySlice';
+
 
 export const store = configureStore({
     reducer: {
-        app: AppState,
+        app: appState,
+        category: categoryReducer,
     },
-})
+});
 
-export type RootState = ReturnType<typeof store.getState>
+// Define the RootState type to use across the app for type safety
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

@@ -1,0 +1,110 @@
+button {
+  display: flex;
+  color: #A4454E;
+  border: 1px solid #A4454E;
+  padding: 0.5% 1%;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; 
+  padding: 1rem;
+  margin-top: 1.5%;
+}
+
+.delete {
+  border: none;
+  font-size: 1.3em;
+  padding: 0;
+  margin-right: 2%;
+  margin-top: 0.3%;
+}
+
+.box {
+  width: 20%;
+  border: 0.64px solid #454545;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-right: 10px;
+  text-align: center;
+  padding: 15px;
+}
+
+.box.selected {
+  border: 0.64px solid #A4454E;
+  color: #A4454E;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  width: 50%;
+  margin-top: 10em;
+}
+
+.loading-image {
+  width: 50%;
+  height: auto;
+  margin-bottom: 50px;
+}
+
+p {
+  text-align: center;
+  color: #454545;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+  .loading-image {
+    width: 70%;
+    height: auto;
+    margin-bottom: 50px;
+  }
+
+  .grid-container {
+    width: 100%;
+    margin-top: 5em;
+  }
+
+  .box {
+    width: 20%;
+    margin: 10px;
+    padding: 12px;
+  }
+  
+  
+  .delete {
+    font-size: 1em;
+    padding: 0;
+    margin-right: 3%;
+    margin-top: 0.3%;
+  }
+
+  button {
+    font-size: 0.6em;
+    padding: 0.8% 1%;
+  }
+
+  .button-container {
+    margin-top: 9%;
+}
+}
+
+
+

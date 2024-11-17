@@ -1,0 +1,25 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2 {
+  font-family: 'Inter', serif;
+  color: #454545;
+}
+
+nav {
+  border-bottom: 1px solid #AEAEAE;
+}
+
+nav p {
+  display: inline-block;
+  color: #A4454E;
+  border: 1px solid #A4454E;
+  padding: 0.3%;
+  margin-left: 20px;
+}
+
+.navbar-logo {
+  height: auto; 
+  width: auto;  
+}
