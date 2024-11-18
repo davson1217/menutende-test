@@ -1,23 +1,48 @@
-import React, {useEffect} from 'react';
-import {RootState} from "./redux/store";
-import {useDispatch, useSelector} from "react-redux";
-import {setView, View} from "./redux/states/appState";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState, AppDispatch } from './redux/store'; 
+import { setView, View } from './redux/states/appState';
+import AddCategory from './components/CategoryAdd';
+import CategoryList from './components/CategoryList';
+import EmptyCategory from './components/EmptyCategory';
+import { fetchCategories } from './redux/slices/categoryThunks';
+import './app.css';
 
-function App() {
-  const {title, view} = useSelector((state: RootState) => state.app);
-  const dispatch = useDispatch();
 
+const App: React.FC = () => {
+  const { title, view } = useSelector((state: RootState) => state.app);
+  const { categories, loading } = useSelector((state: RootState) => state.category);
+  const dispatch = useDispatch<AppDispatch>(); 
+
+ 
   useEffect(() => {
-    dispatch(setView({view: View.CategoryList}))
-  });
+    dispatch(fetchCategories()); 
+    dispatch(setView({ view: View.CategoryList })); 
+  }, [dispatch]);
 
-  switch (view) {
-    case View.CategoryAdd:
-      return <div><h1>{title}</h1><section>Add Category</section></div>;
-    case View.CategoryList:
-      return <div><h1>{title}</h1> <section>All Categories</section></div>
-    default: return <div>NONE</div>
-  }
-}
+  const renderContent = () => {
+    if (loading) {
+      return <p>Loading...</p>;
+    }
+    if (view === View.CategoryAdd) {
+      return <AddCategory />;
+    }
+    if (categories.length === 0) {
+      return <EmptyCategory />;
+    }
+    return <CategoryList />;
+  };
+
+  return (
+    <div className="app-container">
+      <div className="app-top" >
+        <h1 > {title}</h1>
+      </div>
+      <div className="app-bottom" style={{ margin: '20px' }}>
+        {renderContent()}
+      </div>
+    </div>
+  );
+};
 
 export default App;
