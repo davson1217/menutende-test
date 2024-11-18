@@ -1,0 +1,98 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 8px;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input {
+  width: 95%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1.2px solid #454545;
+  border-radius: 4px;
+}
+
+.input:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  border: 1.2px solid #A4454E;
+}
+
+.modal-submit {
+  padding: 0.5rem 1rem;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  background-color: #A4454E;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  
+}
+
+.modal-submit:hover {
+  background-color: #A4454E54;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-close {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #333;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.modal-close:hover {
+  background-color: #dcdcdc;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+  .modal-content {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 80%;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal-content p {
+    margin: 1.5em 0;
+  }
+
+  .delete-button,
+  .cancel-button  {
+    padding: 0.8rem;
+  }
+}

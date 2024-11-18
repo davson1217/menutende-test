@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export enum View {
     None,
@@ -8,7 +8,7 @@ export enum View {
 
 interface CounterState {
     title: string;
-    view: View
+    view: View;
 }
 
 const initialState: CounterState = {
@@ -20,12 +20,12 @@ export const appState = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setView: (state, action: PayloadAction<{view: View}>) => {
+        setView: (state, action: PayloadAction<{ view: View }>) => {
             state.view = action.payload.view;
         }
     },
 })
 
-export const { setView } = appState.actions
+export const { setView } = appState.actions;
 
-export default appState.reducer
+export default appState.reducer;
