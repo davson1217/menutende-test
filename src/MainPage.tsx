@@ -53,24 +53,29 @@ const MainPage: React.FC = () => {
   const handleDelete = async () => {
     if (selectedCategory) {
       try {
+        const username = 'sharon-8920'; 
         const response = await fetch(
-          `https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/category/sharon-8920`,
+          `https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/category/${username}/${selectedCategory}`,
           {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: selectedCategory }),
           }
         );
+
         if (response.ok) {
           dispatch(deleteCategory(selectedCategory));
+          dispatch(setSelectedCategory({ id: null, name: null }));
           dispatch(setDeleteModalState(false));
+          console.log('Category deleted successfully.');
+        } else {
+          const errorData = await response.json();
+          console.error('Failed to delete category:', errorData);
         }
       } catch (error) {
         console.error('Error deleting category:', error);
       }
     }
   };
-
   const handleCategoryClick = (category: Category) => {
     if (selectedCategory === category.id) {
       dispatch(setSelectedCategory({ id: null, name: null }));
