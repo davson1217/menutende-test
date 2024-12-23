@@ -1,6 +1,7 @@
 .back_button{
     display: flex;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 .back_button span{
     margin-left: 10px;
@@ -12,4 +13,27 @@
     width: 50%;
     background-color: #BF658D;
     color: white;
+    margin-top: 50px;
+    padding: 20px;
+}
+.add_categories_container input{
+    width: 100%;
+    border: 0px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.categories_lists_container{
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    padding-top: 20px;
+}
+.categories_lists_container .categories_card_div{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+.categories_lists_container .button_div{
+    text-align: right;
 }

@@ -3,13 +3,16 @@ import { useDispatch } from 'react-redux';
 import { View, setView } from '../redux/states/appState';
 import { IoArrowBackSharp } from "react-icons/io5";
 import './style.css';
+import Button from './reuseables/Button';
 
 const AddCategories = () => {
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const addCategories = async()=>{
         try{
+            setLoading(true);
             const response = await fetch('https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/add-category/8931',{
                 method:'POST',
                 headers: {
@@ -18,6 +21,7 @@ const AddCategories = () => {
                 body: JSON.stringify({ category: inputValue })
             });
             const data = await response.json();
+            setLoading(false)
             if(data.success){
                 dispatch(setView({view: View.CategoryList}))
             }
@@ -41,7 +45,7 @@ const AddCategories = () => {
             <span>Back</span>
         </div>
         <input type='text' value={inputValue} onChange={(e)=>setInputValue(e.target.value)} />
-        <button onClick={addCategories}>Add Category</button>
+        <Button onClick={addCategories} title={loading ? 'Loading...' : 'Add Category'} variant='white_bg_button'/>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {setView, View} from "./redux/states/appState";
 import CategoryLists from './components/CategoryLists';
 import AddCategories from './components/AddCategories';
+import './App.css';
 
 function App() {
   const {title, view} = useSelector((state: RootState) => state.app);
@@ -20,7 +21,7 @@ function App() {
       content = <AddCategories />;
       break;
     case View.CategoryList:
-      content = <div><h1>{title}</h1> <section>All Categories <CategoryLists /></section></div>
+      content = <CategoryLists />;
       break;
     default: content = <div>None</div>
   }
@@ -28,7 +29,7 @@ function App() {
   return(
     <div>
       <div className='nav_bar'>
-        {title}
+        <h2>{title}</h2>
       </div>
       {content}
     </div>
