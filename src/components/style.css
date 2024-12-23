@@ -1,0 +1,15 @@
+.back_button{
+    display: flex;
+    margin-bottom: 10px;
+}
+.back_button span{
+    margin-left: 10px;
+}
+
+.add_categories_container{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    background-color: #BF658D;
+    color: white;
+}
