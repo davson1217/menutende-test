@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, setCategories, setView } from "../redux/states/appState";
 import { RootState } from "../redux/store";
-import { MdOutlineCancel } from "react-icons/md";
 import Button from "./reuseables/Button";
 import CategoriesCard from "./reuseables/CategoriesCard";
 import { CategoriesServices } from "../functions/CategoriesServices";

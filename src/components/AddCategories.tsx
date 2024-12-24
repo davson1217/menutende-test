@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { View, setView } from '../redux/states/appState';
 import { IoArrowBackSharp } from "react-icons/io5";
