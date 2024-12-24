@@ -1,3 +1,4 @@
+/* Add Categories Styling */
 .back_button{
     display: flex;
     margin-bottom: 10px;
@@ -6,7 +7,6 @@
 .back_button span{
     margin-left: 10px;
 }
-
 .add_categories_container{
     text-align: center;
     margin: auto;
@@ -23,6 +23,7 @@
     padding: 10px;
 }
 
+/* Categories Lists Styling */
 .categories_lists_container{
     margin: auto;
     width: 90%;
