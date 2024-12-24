@@ -2,6 +2,9 @@ import React, {useEffect} from 'react';
 import {RootState} from "./redux/store";
 import {useDispatch, useSelector} from "react-redux";
 import {setView, View} from "./redux/states/appState";
+import CategoryLists from './components/CategoryLists';
+import AddCategories from './components/AddCategories';
+import './App.css';
 
 function App() {
   const {title, view} = useSelector((state: RootState) => state.app);
@@ -9,15 +12,28 @@ function App() {
 
   useEffect(() => {
     dispatch(setView({view: View.CategoryList}))
-  });
+  },[]);
+
+  let content;
 
   switch (view) {
     case View.CategoryAdd:
-      return <div><h1>{title}</h1><section>Add Category</section></div>;
+      content = <AddCategories />;
+      break;
     case View.CategoryList:
-      return <div><h1>{title}</h1> <section>All Categories</section></div>
-    default: return <div>NONE</div>
+      content = <CategoryLists />;
+      break;
+    default: content = <div>None</div>
   }
+
+  return(
+    <div>
+      <div className='nav_bar'>
+        <h2>{title}</h2>
+      </div>
+      {content}
+    </div>
+  )
 }
 
 export default App;

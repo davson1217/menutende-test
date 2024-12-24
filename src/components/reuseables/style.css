@@ -1,0 +1,55 @@
+.button_div button{
+    outline: none;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+button.pink_bg_button{
+    background-color: #BF658D;
+    color: white;
+}
+button.white_bg_button{
+    color: #BF658D;
+    background-color: white;
+}
+
+
+/* Categories Card */
+.category_card_container{
+    height: 200px;
+    border: 1px solid #BF658D;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    overflow: clip;
+}
+.category_card_container .back_page{
+    display: none;
+}
+
+.category_card_container .front_page{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+.category_card_container:hover .front_page{
+    opacity: 0.3;
+    z-index: -1;
+}
+.category_card_container:hover .back_page{
+    display: block;
+    background-color: rgb(191, 101, 141,0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all .3s ease-in;
+}
