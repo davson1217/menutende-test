@@ -17,7 +17,7 @@ const CategoriesCard = ({
             {category}
         </div>
         <div className="back_page">
-            <RiDeleteBinLine onClick={() => handleCategoryDeletion(id)} />
+            <RiDeleteBinLine fontSize={'1.4rem'} onClick={() => handleCategoryDeletion(id)} />
         </div>
     </div>
   );

@@ -28,11 +28,11 @@ const CategoryLists = () => {
   const categoriesServices = new CategoriesServices();
 
   const fetchCategoryLists = async () => {
-    const res:Response = await categoriesServices.getCategories(setLoading)
+    const res: Response = await categoriesServices.getCategories(setLoading);
     if (res.success) {
-        dispatch(setCategories(res.categories));
+      dispatch(setCategories(res.categories));
     }
-  }
+  };
 
   useEffect(() => {
     fetchCategoryLists();
@@ -43,33 +43,37 @@ const CategoryLists = () => {
   };
 
   const handleCategoryDeletion: (id: string) => Promise<void> = async (id) => {
-    const res:Response = await categoriesServices.deleteCategories(setLoading,id)
+    const res: Response = await categoriesServices.deleteCategories(
+      setLoading,
+      id
+    );
     if (res.success) {
-        fetchCategoryLists()
+      fetchCategoryLists();
     }
   };
 
   return (
     <div className="categories_lists_container">
       <Button title="Add New" onClick={navigateToAddCategories} />
-      <div className="categories_card_div">
-        {loading ?
-          <div className="loader"></div> :
-            categories.length > 0
-             ?
-            categories.map((category: Category) => (
+      <div>
+        {loading ? (
+          <div className="loader"></div>
+        ) : categories.length > 0 ? (
+          <div className="categories_card_div">
+            {categories.map((category: Category) => (
               <CategoriesCard
                 category={category.category}
                 id={category.id}
                 handleCategoryDeletion={handleCategoryDeletion}
                 key={category.id}
               />
-            ))
-          
-         : (
-          <>
+            ))}
+          </div>
+        ) : (
+          <div className="empty_state">
+            <img src="/no_result.jpg" alt="Empty State" />
             <p>No new categories to display</p>
-          </>
+          </div>
         )}
       </div>
     </div>

@@ -38,3 +38,12 @@
 .categories_lists_container .button_div{
     text-align: right;
 }
+.empty_state{
+    margin: auto;
+}
+.empty_state img{
+    width: 40%;
+}
+.empty_state p{
+    font-size: 20px;
+}
