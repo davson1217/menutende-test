@@ -4,33 +4,19 @@ import { View, setView } from '../redux/states/appState';
 import { IoArrowBackSharp } from "react-icons/io5";
 import './style.css';
 import Button from './reuseables/Button';
+import { CategoriesServices } from '../functions/CategoriesServices';
 
 const AddCategories = () => {
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const categoriesServices = new CategoriesServices();
+
     const addCategories = async()=>{
-        try{
-            setLoading(true);
-            const response = await fetch('https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/add-category/8931',{
-                method:'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ category: inputValue })
-            });
-            const data = await response.json();
-            setLoading(false)
-            if(data.success){
-                dispatch(setView({view: View.CategoryList}))
-            }
-        }catch(err: unknown) {
-            if (err instanceof Error) {
-                throw new Error(err.message);
-            } else {
-                throw new Error("An unknown error occurred");
-            }
+        const response = await categoriesServices.addCategories(setLoading, { category: inputValue })
+        if(response.success){
+            dispatch(setView({view: View.CategoryList}))
         }
     }
 

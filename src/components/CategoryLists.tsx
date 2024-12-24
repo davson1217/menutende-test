@@ -1,10 +1,11 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { View, setCategories, setView } from "../redux/states/appState";
 import { RootState } from "../redux/store";
 import { MdOutlineCancel } from "react-icons/md";
 import Button from "./reuseables/Button";
 import CategoriesCard from "./reuseables/CategoriesCard";
+import { CategoriesServices } from "../functions/CategoriesServices";
 
 type Response = {
   success: boolean;
@@ -24,26 +25,14 @@ const CategoryLists = () => {
     (state: RootState) => state.app.categories
   ) as Category[];
 
-  const fetchCategoryLists = useCallback(async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        "https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/categories/8931"
-      );
-      const res: Response = await response.json();
-      setLoading(false);
-      if (res.success) {
+  const categoriesServices = new CategoriesServices();
+
+  const fetchCategoryLists = async () => {
+    const res:Response = await categoriesServices.getCategories(setLoading)
+    if (res.success) {
         dispatch(setCategories(res.categories));
-      }
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.log(err.message);
-        // throw new Error(err.message);
-      } else {
-        throw new Error("An unknown error occurred");
-      }
     }
-  }, [dispatch]);
+  }
 
   useEffect(() => {
     fetchCategoryLists();
@@ -54,28 +43,9 @@ const CategoryLists = () => {
   };
 
   const handleCategoryDeletion: (id: string) => Promise<void> = async (id) => {
-    try {
-      await fetch(
-        `https://menutender-testing-597ef11a2ec3.herokuapp.com/api/assessment/category/8931/${id}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-        .then((data) => data.json())
-        .then((response) => {
-          if (response.success) {
-            fetchCategoryLists();
-          }
-        });
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        throw new Error(err.message);
-      } else {
-        throw new Error("An unknown error occurred");
-      }
+    const res:Response = await categoriesServices.deleteCategories(setLoading,id)
+    if (res.success) {
+        fetchCategoryLists()
     }
   };
 
