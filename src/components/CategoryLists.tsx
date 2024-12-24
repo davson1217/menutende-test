@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { View, setCategories, setView } from "../redux/states/appState";
+import { CategoryState, View, setCategories, setView } from "../redux/states/appState";
 import { RootState } from "../redux/store";
 import Button from "./reuseables/Button";
 import CategoriesCard from "./reuseables/CategoriesCard";
@@ -8,13 +8,8 @@ import { CategoriesServices } from "../functions/CategoriesServices";
 
 type Response = {
   success: boolean;
-  categories: object[];
+  categories: CategoryState[];
 };
-
-export interface Category {
-  id: string;
-  category: string;
-}
 
 const CategoryLists = () => {
   const dispatch = useDispatch();
@@ -22,7 +17,7 @@ const CategoryLists = () => {
 
   const categories = useSelector(
     (state: RootState) => state.app.categories
-  ) as Category[];
+  ) as CategoryState[];
 
   const categoriesServices = new CategoriesServices();
 
@@ -59,7 +54,7 @@ const CategoryLists = () => {
           <div className="loader"></div>
         ) : categories.length > 0 ? (
           <div className="categories_card_div">
-            {categories.map((category: Category) => (
+            {categories.map((category: CategoryState) => (
               <CategoriesCard
                 category={category.category}
                 id={category.id}
